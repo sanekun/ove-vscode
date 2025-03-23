@@ -4,6 +4,8 @@ Generate [ove](https://github.com/TeselaGen/tg-oss/tree/master/packages/ove) web
 
 refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
+![ove-vscode](test/ove-vscode.png)
+
 ## Installation
 
 vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.0.0.vsix
