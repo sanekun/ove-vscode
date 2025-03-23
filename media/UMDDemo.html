@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@teselagen/ove/style.css"
+    />
+  </head>
+  <body style="display: flex">
+    <a id="backButton"> Back </a> &nbsp;
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/@teselagen/ove/index.umd.js"
+    ></script>
+    <script>
+      type = "text/javascript";
+      //src = "https://unpkg.com/bio-parsers/umd/bio-parsers.js";
+      src = "../media/bioparser.umd.js";
+    </script>
+    <script src="https://unpkg.com/bio-parsers/umd/bio-parsers.js"></script>
+    <script>
+        const jsonOutput = window.bioParsers.genbankToJson(
+          `LOCUS       kc2         108 bp    DNA     linear    01-NOV-2016
+    COMMENT             teselagen_unique_id: 581929a7bc6d3e00ac7394e8
+    FEATURES             Location/Qualifiers
+         CDS             1..108
+                         /label="GFPuv"
+         misc_feature    61..108
+                         /label="gly_ser_linker"
+         bogus_dude      4..60
+                         /label="ccmN_sig_pep"
+         misc_feature    4..60
+                         /label="ccmN_nterm_sig_pep"
+                         /pragma="Teselagen_Part"
+                         /preferred5PrimeOverhangs=""
+                         /preferred3PrimeOverhangs=""
+    ORIGIN      
+            1 atgaaggtct acggcaagga acagtttttg cggatgcgcc agagcatgtt ccccgatcgc
+           61 ggtggcagtg gtagcgggag ctcgggtggc tcaggctctg ggg
+    //`
+        );
+      // console.log(jsonOutput[0].parsedSequence);
+      // editor.getState()['sequenceData']
+    </script>
+    <script>
+      function newData() {
+        return bioParsers.jsonToGenbank(editor.getState()["sequenceData"]);
+      }
+    </script>
+    <button style="position:fixed; top: 10px; right:35px; z-index:20000; display:flex;">Save</button>
+    <button onclick=console.log(newData())>Console log</button>
+    <div>
+    <script type="text/javascript">
+      const hrefToUse = window.location.href.includes("localhost")
+        ? `${window.location.origin}/#/Editor`
+        : "https://teselagen.github.io/tg-oss/ove-demo/";
+
+      document.getElementById("backButton").setAttribute("href", hrefToUse);
+      const editor = window.createVectorEditor("createDomNodeForMe", {
+        withPreviewMode: true,
+        editorName: "FirstSequence",
+        showMenuBar: true,
+        handlers: {
+          onSave: (updatedData) => {
+            console.log("Updated Data", updatedData);
+          },
+        }
+      });
+      /* createDomNodeForMe will make a dom node for you and append it to the document.body*/
+      editor.updateEditor({
+        sequenceData: jsonOutput[0].parsedSequence,
+      });
+      const editor2 = window.createVectorEditor("createDomNodeForMe", {
+        withPreviewMode: true,
+        showMenuBar: true,
+        editorName: "AnotherSequence",
+      });
+      /* createDomNodeForMe will make a dom node for you and append it to the document.body*/
+      editor2.updateEditor({
+        sequenceData: {
+          name: "Another Sequence",
+          circular: false,
+          sequence: "gtaacccccc",
+          features: [
+            {
+              id: "agog98",
+              name: "2nd Feature",
+              type: "CDS",
+              start: 1,
+              end: 5,
+            },
+          ],
+        },
+      });
+    </script>
+    </div>
+  </body>
+</html>
