@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -70,13 +70,12 @@
     "@types/vscode": "^1.98.0",
     "@vscode/test-cli": "^0.0.10",
     "@vscode/test-electron": "^2.4.1",
+    "depcheck": "^1.4.7",
     "eslint": "^9.21.0",
     "vsce": "^2.15.0"
   },
   "dependencies": {
     "@teselagen/bio-parsers": "^0.4.27",
-    "@teselagen/ove": "^0.7.27",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.0.0"
   }
 }
