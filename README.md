@@ -4,11 +4,14 @@ Generate [ove](https://github.com/TeselaGen/tg-oss/tree/master/packages/ove) web
 
 refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
-![ove-vscode](test/ove-vscode.png)
+![ove-vscode](media/ove-vscode.png)
 
 ## Installation
 
+vscode-marketplace: [openvectoreditor](https://marketplace.visualstudio.com/items?itemName=sanekun.openvectoreditor)
+
 vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.0.0.vsix
+
 
 ## Features
 
@@ -19,7 +22,7 @@ vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.0.
 
 ## Known Issues
 
-.dna format support    
+.dna format doesn't support  
 - cannot convert .dna format to json with [bio-parser](https://github.com/TeselaGen/tg-oss/tree/master/packages/bio-parsers)
 
 save data
@@ -27,8 +30,8 @@ save data
 
 ## Release Notes
 
-### 1.0.0
+### 1.0.4
 
-- 250324
+- 250628
 - support .gb, .fa, .fasta
-- support SAVE with custom button
+- SAVE with custom button

@@ -1,74 +1,73 @@
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@teselagen/ove/style.css"
-    />
+    <link rel="stylesheet" type="text/css" href="ove.css" />
   </head>
   <body style="display: flex">
-    <a id="backButton"> Back </a> &nbsp;
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/@teselagen/ove/index.umd.js"
-    ></script>
-    <script>
-      type = "text/javascript";
-      //src = "https://unpkg.com/bio-parsers/umd/bio-parsers.js";
-      src = "../media/bioparser.umd.js";
-    </script>
-    <script src="https://unpkg.com/bio-parsers/umd/bio-parsers.js"></script>
-    <script>
-        const jsonOutput = window.bioParsers.genbankToJson(
-          `LOCUS       kc2         108 bp    DNA     linear    01-NOV-2016
-    COMMENT             teselagen_unique_id: 581929a7bc6d3e00ac7394e8
-    FEATURES             Location/Qualifiers
-         CDS             1..108
-                         /label="GFPuv"
-         misc_feature    61..108
-                         /label="gly_ser_linker"
-         bogus_dude      4..60
-                         /label="ccmN_sig_pep"
-         misc_feature    4..60
-                         /label="ccmN_nterm_sig_pep"
-                         /pragma="Teselagen_Part"
-                         /preferred5PrimeOverhangs=""
-                         /preferred3PrimeOverhangs=""
-    ORIGIN      
-            1 atgaaggtct acggcaagga acagtttttg cggatgcgcc agagcatgtt ccccgatcgc
-           61 ggtggcagtg gtagcgggag ctcgggtggc tcaggctctg ggg
-    //`
-        );
-      // console.log(jsonOutput[0].parsedSequence);
-      // editor.getState()['sequenceData']
-    </script>
-    <script>
-      function newData() {
-        return bioParsers.jsonToGenbank(editor.getState()["sequenceData"]);
+    <script type="text/javascript" src="index.umd.js"></script>
+    <style>
+      html {
+        background-color: white;
       }
-    </script>
-    <button style="position:fixed; top: 10px; right:35px; z-index:20000; display:flex;">Save</button>
-    <button onclick=console.log(newData())>Console log</button>
-    <div>
+      .save-button {
+        display: inline-block;
+        padding: 10px;
+        background-color: #0078d4;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: none;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        right: 35px;
+        z-index: 20000;
+      }
+      .save-button:hover {
+        background-color: #005a9e; /* 더 어두운 파란색으로 변화 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+      }
+      .save-button:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    </style>
+    <button id="save-button" class="save-button" onclick="postSave()">
+      SAVE
+    </button>
     <script type="text/javascript">
-      const hrefToUse = window.location.href.includes("localhost")
-        ? `${window.location.origin}/#/Editor`
-        : "https://teselagen.github.io/tg-oss/ove-demo/";
+      function isSavable() {
+        document.getElementById("save-button").disabled = true;
+      }
+      isSavable();
 
-      document.getElementById("backButton").setAttribute("href", hrefToUse);
+      function postSave() {
+        console.log("postSave called");
+      }
       const editor = window.createVectorEditor("createDomNodeForMe", {
-        withPreviewMode: true,
+        withPreviewMode: false,
         editorName: "FirstSequence",
         showMenuBar: true,
-        handlers: {
-          onSave: (updatedData) => {
-            console.log("Updated Data", updatedData);
-          },
-        }
       });
       /* createDomNodeForMe will make a dom node for you and append it to the document.body*/
       editor.updateEditor({
-        sequenceData: jsonOutput[0].parsedSequence,
+        sequenceData: {
+          circular: true,
+          sequence:
+            "gtagagagagagtgagcccgacccccgtagagagagagtgagcccgacccccgtagagagagagtgagcccgacccccgtagagagagagtgagcccgaccccc",
+          features: [
+            {
+              id: "2oi452",
+              name: "I'm a feature :)",
+              start: 10,
+              end: 20,
+            },
+          ],
+        },
       });
       const editor2 = window.createVectorEditor("createDomNodeForMe", {
         withPreviewMode: true,
@@ -92,7 +91,8 @@
           ],
         },
       });
+      console.log("editor:", editor);
+      window.debugEditor = editor; // For debugging purposes
     </script>
-    </div>
   </body>
 </html>

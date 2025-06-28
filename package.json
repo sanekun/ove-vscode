@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -41,7 +41,8 @@
         "displayName": "OVE",
         "selector": [
           {
-            "filenamePattern": "*.dna"
+            "filenamePattern": "*.dna",
+            "binary": true
           },
           {
             "filenamePattern": "*.fasta"
@@ -75,7 +76,6 @@
     "vsce": "^2.15.0"
   },
   "dependencies": {
-    "@teselagen/bio-parsers": "^0.4.27",
     "react": "^19.0.0"
   }
 }

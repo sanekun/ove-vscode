@@ -9,3 +9,6 @@ vsc-extension-quickstart.md
 **/eslint.config.mjs
 **/.vscode-test.*
 *.vsix
+media/test.js
+media/UMDDemo.html
+test/*

@@ -26308,7 +26308,8 @@ var __async = (__this, __arguments, generator) => {
         };
         __name(read, "read");
         const returnVal = createInitialSequence(options);
-        const arrayBuffer = yield getArrayBufferFromFile(fileObj);
+        const arrayBuffer = fileObj;
+        // const arrayBuffer = yield getArrayBufferFromFile(fileObj);
         const ext = extractFileExtension(options.fileName);
         let isProtein = options.isProtein;
         if (ext && /^(prot)$/.test(ext)) {
@@ -26329,6 +26330,7 @@ var __async = (__this, __arguments, generator) => {
         yield read(1);
         const length = yield unpack(4, "I");
         const title = yield read(8, "ascii");
+        
         if (length !== 14 || title !== "SnapGene") {
           throw new Error("Wrong format for a SnapGene file !");
         }
@@ -32698,10 +32700,10 @@ ${seq.sequence}
       sizeToUse = proteinSize;
     }
     let fastaString = "";
-    fastaString += `>${name2 || "Untitled Sequence"}|`;
-    fastaString += "|" + sizeToUse;
-    fastaString += description ? "|" + mangleOrStripUrls(description, options) : "";
-    fastaString += "|" + (circular ? "circular" : "linear");
+    fastaString += `>${name2 || "Untitled Sequence"}`;
+    // fastaString += "|" + sizeToUse;
+    // fastaString += description ? "|" + mangleOrStripUrls(description, options) : "";
+    // fastaString += "|" + (circular ? "circular" : "linear");
     fastaString += "\n";
     fastaString += (seqToUse.match(/.{1,80}/g) || []).join("\n");
     return fastaString;

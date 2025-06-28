@@ -1,57 +1,50 @@
-LOCUS       pYTK056                 1899 bp ds-DNA     circular     18-DEC-2014
+LOCUS       pYTK056                 1899 bp    ds-DNA  circular SYN 29-JUN-2025
 DEFINITION  .
-ACCESSION   <unknown id>
-VERSION     <unknown id>
+ACCESSION  <unknown id>
+VERSION  <unknown id>
 KEYWORDS    .
 SOURCE      .
   ORGANISM  . .
-COMMENT     
-COMMENT     ApEinfo:methylated:1
+COMMENT             
+COMMENT             ApEinfo:methylated:1
 FEATURES             Location/Qualifiers
      rep_origin      complement(1134..1897)
-                     /label=ColE1
-                     /ApEinfo_fwdcolor=#7F7F7F
-                     /ApEinfo_revcolor=#7F7F7F
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="ColE1"
+                     /ApEinfo_fwdcolor="#7F7F7F"
+                     /ApEinfo_revcolor="#7F7F7F"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      CDS             complement(369..1028)
-                     /label=CamR
-                     /ApEinfo_fwdcolor=#0000FF
-                     /ApEinfo_revcolor=#0000FF
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="CamR"
+                     /ApEinfo_fwdcolor="#0000FF"
+                     /ApEinfo_revcolor="#0000FF"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      promoter        complement(1029..1133)
-                     /label=CamR Promoter
-                     /ApEinfo_fwdcolor=#66CCFF
-                     /ApEinfo_revcolor=#66CCFF
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="CamR Promoter"
+                     /ApEinfo_fwdcolor="#66CCFF"
+                     /ApEinfo_revcolor="#66CCFF"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      terminator      complement(260..368)
-                     /label=CamR Terminator
-                     /ApEinfo_fwdcolor=#66CCFF
-                     /ApEinfo_revcolor=#66CCFF
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="CamR Terminator"
+                     /ApEinfo_fwdcolor="#66CCFF"
+                     /ApEinfo_revcolor="#66CCFF"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      terminator      23..246
-                     /label=ScTDH1 Terminator
-                     /ApEinfo_fwdcolor=#FF8EFF
-                     /ApEinfo_revcolor=#FF8EFF
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="ScTDH1 Terminator"
+                     /ApEinfo_fwdcolor="#FF8EFF"
+                     /ApEinfo_revcolor="#FF8EFF"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      protein_bind    join(3..8,10..13)
-                     /label=BsaI
-                     /ApEinfo_fwdcolor=#00FF2C
-                     /ApEinfo_revcolor=#E72E00
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
+                     /label="BsaI"
+                     /ApEinfo_fwdcolor="#00FF2C"
+                     /ApEinfo_revcolor="#E72E00"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
      protein_bind    complement(join(247..250,252..257))
-                     /label=BsaI(1)
-                     /ApEinfo_label=BsaI
-                     /ApEinfo_fwdcolor=#00FF2C
-                     /ApEinfo_revcolor=#E72E00
-                     /ApEinfo_graphicformat=arrow_data {{0 1 2 0 0 -1} {} 0}
-                     width 5 offset 0
-ORIGIN
+                     /label="BsaI(1)"
+                     /ApEinfo_label="BsaI"
+                     /ApEinfo_fwdcolor="#00FF2C"
+                     /ApEinfo_revcolor="#E72E00"
+                     /ApEinfo_graphicformat="arrow_data {{0 1 2 0 0 -1} {} 0}width 5 offset 0"
+ORIGIN      
         1 tcggtctcaa tcctaactcg agataaagca atcttgatga ggataatgat ttttttttga
        61 atatacataa atactaccgt ttttctgcta gattttgtga tgacgtaaat aagtacatat
       121 tactttttaa gccaagacaa gattaagcat taactttacc cttttctttc taagtttcaa
