@@ -10,7 +10,7 @@ refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
 vscode-marketplace: [openvectoreditor](https://marketplace.visualstudio.com/items?itemName=sanekun.openvectoreditor)
 
-vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.0.0.vsix
+vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.0.vsix
 
 
 ## Features
@@ -22,16 +22,30 @@ vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.0.
 
 ## Known Issues
 
-.dna format doesn't support  
-- cannot convert .dna format to json with [bio-parser](https://github.com/TeselaGen/tg-oss/tree/master/packages/bio-parsers)
-
 save data
 - cannot access `onSave` react hook and it's function in umd calling.
 
 ## Release Notes
 
-### 1.0.4
+- refer to [Changelog](CHANGELOG.md)
 
-- 250628
-- support .gb, .fa, .fasta
-- SAVE with custom button
+### 1.1.0
+
+- Change initial state `preview mode` to `normal mode`
+- Use umd version bioparser
+    - Change fasta name from `jsonToFasta` function
+    ``` code
+    name||length||description > name
+    ```
+- **Update ove-webview panel**
+    - background color is always white
+    - height is always 100%
+- **Support .dna format**
+    - Edit bio-parser script
+    ``` code
+    // const arrayBuffer = yield getArrayBufferFromFile(fileObj);
+    const arrayBuffer = fileObj;
+    ```
+    - Change `CustomTextEditorProvider` to `CustomEditorProvider` (can read binary)
+    - disabled save button.
+- Update README to 1.1.0
