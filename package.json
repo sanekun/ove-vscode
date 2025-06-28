@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -13,6 +13,9 @@
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "DNA", "vector", "genbank", "biology", "plasmid", "research"
   ],
   "activationEvents": [
     "onStartupFinished",

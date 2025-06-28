@@ -26,3 +26,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
     - Change `CustomTextEditorProvider` to `CustomEditorProvider` (can read binary)
     - disabled save button.
 - Update README to 1.1.0
+
+### 1.1.1
+
+- Update README in vsix
+- Update `package.json` tag, category
