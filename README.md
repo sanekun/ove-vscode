@@ -16,7 +16,7 @@ vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.
 ## Features
 
 - tab menu: openvectoreditor.show: open general ove (for testing)
-- Support .fa, .fasta, .gb format
+- Support .dna, .fa, .fasta, .gb format
 - Select DNA File - Open With - select OVE (Can set as default)
 - Save file with custom button (Top-Right)
 
