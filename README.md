@@ -1,6 +1,6 @@
 # openvectoreditor in vscode 
 
-Generate [ove](https://github.com/TeselaGen/tg-oss/tree/master/packages/ove) webview when open dna format in vscode.
+Generate [openvectoreditor](https://github.com/TeselaGen/tg-oss/tree/master/packages/ove) webview when open dna format in vscode.
 
 refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
@@ -8,22 +8,23 @@ refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
 ## Installation
 
-vscode-marketplace: [openvectoreditor](https://marketplace.visualstudio.com/items?itemName=sanekun.openvectoreditor)
+vscode-marketplace: https://marketplace.visualstudio.com/items?itemName=sanekun.openvectoreditor
 
-vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.0.vsix
+vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.2.vsix
 
 
 ## Features
 
-- tab menu: openvectoreditor.show: open general ove (for testing)
+- tab menu: openvectoreditor.show: open general ove (Can remain contents)
 - Support .dna, .fa, .fasta, .gb format
 - Select DNA File - Open With - select OVE (Can set as default)
-- Save file with custom button (Top-Right)
+- Save file with custom button (not support .dna)
 
 ## Known Issues
 
-save data
-- cannot access `onSave` react hook and it's function in umd calling.
+data remaining
+- When switching to another tab, the content does not persist.
+- Only the editor opened via the command `openvectoreditor.show` retains its content.
 
 ## Release Notes
 

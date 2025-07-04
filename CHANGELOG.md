@@ -31,3 +31,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Update README in vsix
 - Update `package.json` tag, category
+
+### 1.1.2
+
+- tabmenu name .OVE to .show
+- Add `retainContextWhenHidden: true` option in tabmenu editor
+- code refactoring

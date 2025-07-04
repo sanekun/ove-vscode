@@ -20,6 +20,7 @@ function activate(context) {
         vscode.ViewColumn.One,
         {
           enableScripts: true,
+          retainContextWhenHidden: true,
           localResourceRoots: [
             vscode.Uri.file(path.join(context.extensionPath, 'media'))
           ]
@@ -38,67 +39,44 @@ function getTestHtml(context, webview) {
   const scriptUri = webview.asWebviewUri(
     vscode.Uri.file(path.join(context.extensionPath, 'media', 'index.umd.js'))
   );
-  const genbankText = `LOCUS       kc2         108 bp    DNA     linear    01-NOV-2016
-    COMMENT             teselagen_unique_id: 581929a7bc6d3e00ac7394e8
-    FEATURES             Location/Qualifiers
-         CDS             1..108
-                         /label="GFPuv"
-         misc_feature    61..108
-                         /label="gly_ser_linker"
-         bogus_dude      4..60
-                         /label="ccmN_sig_pep"
-         misc_feature    4..60
-                         /label="ccmN_nterm_sig_pep"
-                         /pragma="Teselagen_Part"
-                         /preferred5PrimeOverhangs=""
-                         /preferred3PrimeOverhangs=""
-    ORIGIN      
-            1 atgaaggtct acggcaagga acagtttttg cggatgcgcc agagcatgtt ccccgatcgc
-           61 ggtggcagtg gtagcgggag ctcgggtggc tcaggctctg ggg
-    //`;
-  const jsonOutput = JSON.stringify(genbankToJson(genbankText)[0].parsedSequence);
-  // console.log(jsonOutput);
+
+  // const htmlcontent = vscode.fs.readFile(context.extensionPath, 'media', 'testWebview.html', 'utf8')
+  // htmlcontent.replace('{{styleUri}}', styleUri.toString())
+  // htmlcontent.replace('{{scriptUri}}', scriptUri.toString())
+  // return htmlcontent;
 
   return `
       <!DOCTYPE html>
       <html>
         <head>
           <link rel="stylesheet" href="${styleUri}" />
+          <style>
+          html, body {
+            height: 100%;
+          }
+          .ove-created-div {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+          }
+          </style>
         </head>
         <body>
-          <script src="${scriptUri}"></script>
-		  <script>
-		  	console.log(${JSON.stringify(jsonOutput)});
+        <script src="${scriptUri}"></script>
+        <script>
 			const editor = window.createVectorEditor("createDomNodeForMe", {
 				withPreviewMode: false,
-				editorName: "VectorEditor",
-				showMenuBar: true,
-				disableSetReadOnly: false,
-			});
-			const editor2 = window.createVectorEditor("createDomNodeForMe", {
-				withPreviewMode: true,
-				editorName: "editor2",
+				editorName: "editor",
 				showMenuBar: true,
 			});
-			editor.updateEditor({
-				sequenceData: {
-				name: "Another Sequence",
-				circular: false,
-				sequence: "gtaacccccc",
-				features: [
-					{
-					id: "agog98",
-					name: "2nd Feature",
-					type: "CDS",
-					start: 1,
-					end: 5,
-					},
-				],
-				},
-			});
-			editor2.updateEditor({
-				sequenceData: ${JSON.parse(JSON.stringify(jsonOutput))}});
-          </script>
+      editor.updateEditor({
+        sequenceData: {
+          circular: true,
+          sequence:
+            "AAGG",
+        },
+      });
+        </script>
         </body>
       </html>
     `;
@@ -109,11 +87,11 @@ class DNAViewerProvider {
     console.log("On provider")
     this.context = context;
   }
-  
+
   async openCustomDocument(uri, openContext, token) {
     return {
       uri,
-      dispose: () => {} // 파일을 닫을 때 호출됨
+      dispose: () => { } // 파일을 닫을 때 호출됨
     };
   }
 
@@ -146,7 +124,7 @@ class DNAViewerProvider {
       let fileName = path.basename(document.uri.fsPath);
       const basename = path.parse(fileName).name.trim();
       const buffer = await vscode.workspace.fs.readFile(document.uri); // Unit8Array
-      const snapgeneOutput = await snapgeneToJson(buffer, {'fileName': basename});
+      const snapgeneOutput = await snapgeneToJson(buffer, { 'fileName': basename });
       jsonOutput = JSON.stringify(snapgeneOutput[0].parsedSequence);
     }
 
@@ -172,6 +150,7 @@ class DNAViewerProvider {
           <link rel="stylesheet" href="${styleUri}" />
           <style>
             html, body {
+              width: 100%;
               height: 100%;
             }
             .ove-created-div {
@@ -228,16 +207,15 @@ class DNAViewerProvider {
 		});
 			}
 		</script>
-		  <button id="save-button" class="save-button" onclick=postSave()>
+      <button id="save-button" class="save-button" onclick=postSave()>
         Save
       </button>
         <script src="${scriptUri}"></script>
-		  <script>
+      <script>
 			const editor = window.createVectorEditor("createDomNodeForMe", {
 				withPreviewMode: false,
 				editorName: "VectorEditor",
 				showMenuBar: true,
-				disableSetReadOnly: false,
 			});
 			editor.updateEditor({
 				sequenceData: ${JSON.parse(JSON.stringify(jsonOutput))}});

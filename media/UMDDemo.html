@@ -5,7 +5,9 @@
   <body style="display: flex">
     <script type="text/javascript" src="index.umd.js"></script>
     <style>
-      html {
+      .ove-created-div {
+        width: 100%;
+        height: 100%;
         background-color: white;
       }
       .save-button {
@@ -58,40 +60,10 @@
         sequenceData: {
           circular: true,
           sequence:
-            "gtagagagagagtgagcccgacccccgtagagagagagtgagcccgacccccgtagagagagagtgagcccgacccccgtagagagagagtgagcccgaccccc",
-          features: [
-            {
-              id: "2oi452",
-              name: "I'm a feature :)",
-              start: 10,
-              end: 20,
-            },
-          ],
+          "ATGC",
         },
+        showReadOnly: false,
       });
-      const editor2 = window.createVectorEditor("createDomNodeForMe", {
-        withPreviewMode: true,
-        showMenuBar: true,
-        editorName: "AnotherSequence",
-      });
-      /* createDomNodeForMe will make a dom node for you and append it to the document.body*/
-      editor2.updateEditor({
-        sequenceData: {
-          name: "Another Sequence",
-          circular: false,
-          sequence: "gtaacccccc",
-          features: [
-            {
-              id: "agog98",
-              name: "2nd Feature",
-              type: "CDS",
-              start: 1,
-              end: 5,
-            },
-          ],
-        },
-      });
-      console.log("editor:", editor);
       window.debugEditor = editor; // For debugging purposes
     </script>
   </body>
