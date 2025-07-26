@@ -37,3 +37,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - tabmenu name .OVE to .show
 - Add `retainContextWhenHidden: true` option in tabmenu editor
 - code refactoring
+
+### 1.1.3
+
+- Add setting `openvectoreditor.viewType` to adjust initial view type (sequence only, circular map only, split)

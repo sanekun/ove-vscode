@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -18,9 +18,7 @@
     "DNA", "vector", "genbank", "biology", "plasmid", "research"
   ],
   "activationEvents": [
-    "onStartupFinished",
-    "onCommand:openvectoreditor.show",
-    "onCustomEditor:openvectoreditor.editor"
+    "onStartupFinished"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -61,7 +59,27 @@
         "command": "openvectoreditor.show",
         "title": "openvectoreditor:show"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "openvectoreditor",
+      "properties": {
+        "openvectoreditor.viewType": {
+          "type": "string",
+          "default": "sequence",
+          "description": "Select the default view type for the editor.",
+          "enum": [
+            "sequence",
+            "circular",
+            "split"
+          ],
+          "enumDescriptions": [
+            "Show sequence only.",
+            "Show circular map only.",
+            "Show sequence and circular map."
+          ]
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",

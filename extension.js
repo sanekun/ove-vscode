@@ -32,6 +32,54 @@ function activate(context) {
   console.log("openvectoreditor: comamnd registered");
 }
 
+function viewType(viewTypeConfig) {
+  if (viewTypeConfig === 'split') {
+    return `
+          panelsShown: [
+            [
+              {
+                id: "circular",
+                name: "Circular Map",
+                active: true,
+              }
+            ],
+            [
+              {
+                id: "sequence",
+                name: "Sequence Map",
+                active: true,
+              },
+              {
+                id: "properties",
+                name: "Properties",
+                active: false,
+              },
+            ]
+          ]`;
+  }
+
+  return `
+        panelsShown: [
+          [
+            {
+              id: "sequence",
+              name: "Sequence Map",
+              active: ${viewTypeConfig === 'sequence'},
+            },
+            {
+              id: "circular",
+              name: "Circular Map",
+              active: ${viewTypeConfig === 'circular'},
+            },
+            {
+              id: "properties",
+              name: "Properties",
+              active: false,
+            },
+          ],
+        ]`;
+}
+
 function getTestHtml(context, webview) {
   const styleUri = webview.asWebviewUri(
     vscode.Uri.file(path.join(context.extensionPath, 'media', 'style.css'))
@@ -39,6 +87,7 @@ function getTestHtml(context, webview) {
   const scriptUri = webview.asWebviewUri(
     vscode.Uri.file(path.join(context.extensionPath, 'media', 'index.umd.js'))
   );
+  const defaultViewType = viewType(vscode.workspace.getConfiguration('openvectoreditor').get('viewType'));
 
   // const htmlcontent = vscode.fs.readFile(context.extensionPath, 'media', 'testWebview.html', 'utf8')
   // htmlcontent.replace('{{styleUri}}', styleUri.toString())
@@ -75,6 +124,7 @@ function getTestHtml(context, webview) {
           sequence:
             "AAGG",
         },
+        ${defaultViewType},
       });
         </script>
         </body>
@@ -84,7 +134,6 @@ function getTestHtml(context, webview) {
 
 class DNAViewerProvider {
   constructor(context) {
-    console.log("On provider")
     this.context = context;
   }
 
@@ -110,6 +159,7 @@ class DNAViewerProvider {
       vscode.Uri.file(path.join(this.context.extensionPath, 'media', 'index.umd.js'))
     );
     const ext = path.extname(document.uri.fsPath.toLowerCase().trim());
+    const defaultViewType = viewType(vscode.workspace.getConfiguration('openvectoreditor').get('viewType'));
 
     let jsonOutput
     if (ext === '.gb') {
@@ -218,7 +268,9 @@ class DNAViewerProvider {
 				showMenuBar: true,
 			});
 			editor.updateEditor({
-				sequenceData: ${JSON.parse(JSON.stringify(jsonOutput))}});
+				sequenceData: ${JSON.parse(JSON.stringify(jsonOutput))},
+        ${defaultViewType},
+        });
       
       // Initialize the editor
       isSavable();

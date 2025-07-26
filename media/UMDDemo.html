@@ -59,10 +59,28 @@
       editor.updateEditor({
         sequenceData: {
           circular: true,
-          sequence:
-          "ATGC",
+          sequence: "ATGC",
         },
         showReadOnly: false,
+        panelsShown: [
+          [
+            {
+              id: "sequence",
+              name: "Sequence Map",
+              active: true,
+            },
+            {
+              id: "circular",
+              name: "Circular Map",
+              active: false,
+            },
+            {
+              id: "properties",
+              name: "Properties",
+              active: false,
+            },
+          ],
+        ],
       });
       window.debugEditor = editor; // For debugging purposes
     </script>
