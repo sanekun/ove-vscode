@@ -41,3 +41,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### 1.1.3
 
 - Add setting `openvectoreditor.viewType` to adjust initial view type (sequence only, circular map only, split)
+
+### 1.1.4
+
+- issue#2 accepted.
+- added Ape color support
+
+``` js
+if (feat.notes.ApEinfo_fwdcolor && feat.notes.ApEinfo_fwdcolor[0]) {
+  feat.color = feat.notes.ApEinfo_fwdcolor[0];
+} else if (feat.notes.ApEinfo_revcolor && feat.notes.ApEinfo_revcolor[0]) {
+  feat.color = feat.notes.ApEinfo_revcolor[0];
+}
+```

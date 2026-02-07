@@ -1,4 +1,4 @@
-# openvectoreditor in vscode 
+# openvectoreditor in vscode
 
 Generate [openvectoreditor](https://github.com/TeselaGen/tg-oss/tree/master/packages/ove) webview when open dna format in vscode.
 
@@ -10,7 +10,7 @@ refer to ove (https://github.com/TeselaGen/tg-oss/tree/master/packages/ove)
 
 vscode-marketplace: https://marketplace.visualstudio.com/items?itemName=sanekun.openvectoreditor
 
-vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.3.vsix
+vscode - tab menu - Extensions: Install from VSIX - select openvectoreditor-1.1.4.vsix
 
 
 ## Features

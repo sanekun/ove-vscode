@@ -20309,6 +20309,11 @@ var __async = (__this, __arguments, generator) => {
         feat.arrowheadType = feat.notes.direction[0].toUpperCase() === "BOTH" ? "BOTH" : feat.notes.direction[0].toUpperCase() === "NONE" ? "NONE" : void 0;
         delete feat.notes.direction;
       }
+      if (feat.notes.ApEinfo_fwdcolor && feat.notes.ApEinfo_fwdcolor[0]) {
+        feat.color = feat.notes.ApEinfo_fwdcolor[0];
+      } else if (feat.notes.ApEinfo_revcolor && feat.notes.ApEinfo_revcolor[0]) {
+        feat.color = feat.notes.ApEinfo_revcolor[0];
+      }
       return feat;
     }
     __name(postProcessGenbankFeature, "postProcessGenbankFeature");
@@ -21665,9 +21670,9 @@ var __async = (__this, __arguments, generator) => {
       this.options = buildOptions(options);
     }
     /**
-     * Parse XML dats to JS object 
-     * @param {string|Buffer} xmlData 
-     * @param {boolean|Object} validationOption 
+     * Parse XML dats to JS object
+     * @param {string|Buffer} xmlData
+     * @param {boolean|Object} validationOption
      */
     parse(xmlData, validationOption) {
       if (typeof xmlData === "string")
@@ -21695,8 +21700,8 @@ var __async = (__this, __arguments, generator) => {
     }
     /**
      * Add Entity which is not by default supported by this library
-     * @param {string} key 
-     * @param {string} value 
+     * @param {string} key
+     * @param {string} value
      */
     addEntity(key, value) {
       if (value.indexOf("&") !== -1) {
@@ -26330,7 +26335,7 @@ var __async = (__this, __arguments, generator) => {
         yield read(1);
         const length = yield unpack(4, "I");
         const title = yield read(8, "ascii");
-        
+
         if (length !== 14 || title !== "SnapGene") {
           throw new Error("Wrong format for a SnapGene file !");
         }
