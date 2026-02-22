@@ -54,3 +54,8 @@ if (feat.notes.ApEinfo_fwdcolor && feat.notes.ApEinfo_fwdcolor[0]) {
   feat.color = feat.notes.ApEinfo_revcolor[0];
 }
 ```
+
+### 1.1.5
+
+- add '.fa', '.gbk' extension
+- Issue#3

@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
         "extensions": [
           ".dna",
           ".fasta",
+          ".fa",
+          ".gbk",
           ".gb"
         ],
         "aliases": [
@@ -49,7 +51,13 @@
             "filenamePattern": "*.fasta"
           },
           {
+            "filenamePattern": "*.fa"
+          },
+          {
             "filenamePattern": "*.gb"
+          },
+          {
+            "filenamePattern": "*.gbk"
           }
         ]
       }

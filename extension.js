@@ -162,7 +162,7 @@ class DNAViewerProvider {
     const defaultViewType = viewType(vscode.workspace.getConfiguration('openvectoreditor').get('viewType'));
 
     let jsonOutput
-    if (ext === '.gb') {
+    if (ext === '.gb' || ext === '.gbk') {
       const doc = await vscode.workspace.openTextDocument(document.uri);
       const fileContent = doc.getText();
       jsonOutput = JSON.stringify(genbankToJson(fileContent)[0].parsedSequence);
@@ -179,7 +179,7 @@ class DNAViewerProvider {
     }
 
     function jsonToFile(newJsonData) {
-      if (ext == '.gb') {
+      if (ext == '.gb' || ext == '.gbk') {
         return jsonToGenbank(newJsonData);
       } else if (ext == '.fa' || ext == '.fasta') {
         return jsonToFasta(newJsonData);
