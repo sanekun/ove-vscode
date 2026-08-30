@@ -2,7 +2,7 @@
   "name": "openvectoreditor",
   "displayName": "openvectoreditor",
   "description": "DNA editor in vscode",
-  "version": "1.1.5",
+  "version": "1.3.0",
   "publisher": "sanekun",
   "repository": {
     "type": "git",
@@ -66,6 +66,10 @@
       {
         "command": "openvectoreditor.show",
         "title": "openvectoreditor:show"
+      },
+      {
+        "command": "openvectoreditor.multiview",
+        "title": "openvectoreditor:multiview"
       }
     ],
     "configuration": {
@@ -85,6 +89,23 @@
             "Show circular map only.",
             "Show sequence and circular map."
           ]
+        },
+        "openvectoreditor.defaultViewOptions": {
+          "type": "array",
+          "default": ["readOnly", "showFeatures"],
+          "description": "Which editor toggles start ON when a file or Multi View tab is opened. Omit an item to have it start OFF.",
+          "items": {
+            "type": "string",
+            "enum": ["readOnly", "showCutSites", "showFeatures", "showPrimers", "showParts"],
+            "enumDescriptions": [
+              "Start the editor in Read Only mode.",
+              "Start with Show Cut Sites enabled.",
+              "Start with Show Features enabled.",
+              "Start with Show Primers enabled.",
+              "Start with Show Parts enabled."
+            ]
+          },
+          "uniqueItems": true
         }
       }
     }

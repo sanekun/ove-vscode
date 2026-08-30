@@ -136,3 +136,5 @@ dist
 .pnp.*
 
 media/test.js
+._.DS_Store
+.DS_Store
